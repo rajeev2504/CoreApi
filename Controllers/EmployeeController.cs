@@ -8,7 +8,7 @@ using Demo.Model;
 using Demo.Repository;
 namespace Demo.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
@@ -90,18 +90,18 @@ namespace Demo.Controllers
 
         [HttpPost]
         [Route("DeletePost")]
-        public async Task<IActionResult> DeletePost(int? empId)
+        public async Task<IActionResult> DeletePost([FromBody]Employee model)
         {
             int result = 0;
 
-            if (empId == null)
+            if (model.EmpId == 0)
             {
                 return BadRequest();
             }
 
             try
             {
-                result = await employeeManagement.DeleteEmployee(empId);
+                result = await employeeManagement.DeleteEmployee(model.EmpId);
                 if (result == 0)
                 {
                     return NotFound();

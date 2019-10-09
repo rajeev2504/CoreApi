@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Demo.Model;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+
 namespace Demo.Repository
 {
     public class EmployeeManagemnt : IEmployeeManagement
